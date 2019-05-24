@@ -21,7 +21,7 @@ const line_to_cell = function line_to_cell(line) {
 }
 
 let lines = fs.readFileSync(0, 'utf-8').split('\n').map(line_to_cell);
-console.log(csvsync.stringify(data));
+process.stdout.write(csvsync.stringify(data));
 
 // see https://stackoverflow.com/a/46173864/1181665
 function col_number(name) {
