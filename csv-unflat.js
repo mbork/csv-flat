@@ -16,7 +16,11 @@ const line_to_cell = function line_to_cell(line) {
 		if (!data[row]) {
 			data[row] = [];
 		}
-		data[row][col] = unescape(content);
+		if (!data[row][col]) {
+			data[row][col] = content;
+		} else {
+			data[row][col] += ('\n' + content);
+		}
 	};
 }
 
@@ -26,10 +30,4 @@ process.stdout.write(csvsync.stringify(data));
 // see https://stackoverflow.com/a/46173864/1181665
 function col_number(name) {
 	return name.split('').reduce((r, a) => r * 26 + parseInt(a, 36) - 9, 0)
-}
-
-// lines.forEach(line => console.log(unescape(line)))
-
-function unescape(string) {
-	return string.replace(/\\n/g, '\n').replace(/\\\\/g, '\\');
 }
