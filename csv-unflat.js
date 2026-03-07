@@ -1,3 +1,5 @@
+#!/usr/bin/node
+
 // Unflatten a csv file
 
 const csvsync = require('csvsync');
