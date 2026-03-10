@@ -1,0 +1,24 @@
+#+TITLE: csv-flat
+
+* Intro
+This is a pair of scripts which convert csvs to and from a "flat" format.  For example, this csv:
+#+begin_src csv
+  city,population
+  Poznań,536151
+#+end_src
+is converted to
+#+begin_example
+  A1:city
+  B1:population
+  A2:Poznań
+  B2:536151
+#+end_example
+
+The main reason to perform these conversions is that diffing csvs with lots of columns when only a few cells were changed results in a hardly legible diff, while diffing the "flat" versions produced by this script gives a human-readable diff.
+
+Another use-case is performing text operations on csvs.  For example, assume that you want to replace all instances of the string ~source~ with ~dest~, but only in the second column.  Performing this on a csv in a text editor may be tricky.  With the "flat" format it can be achieved with ~sed --expression='/^B/s/source/dest/g'~.
+
+* Usage
+Flattening a csv: ~cat input.csv | npm csv-flat.js > output~.
+Unflattening a csv: ~cat input.csv | npm csv-unflat.js > output~.
+
