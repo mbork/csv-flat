@@ -10,6 +10,6 @@
   "author": "mbork",
   "license": "MIT",
   "dependencies": {
-    "csvsync": "^1.1.0"
+    "csvsync": "^1.3.3"
   }
 }
